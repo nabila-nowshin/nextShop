@@ -8,7 +8,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-gray-200 mt-10">
+    <footer className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-gray-200 mt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Left side - Branding */}
         <div>
@@ -19,20 +19,26 @@ export default function Footer() {
         </div>
 
         {/* Center - Navigation */}
-        <div className="flex flex-col space-y-2 md:space-y-0 md:flex-row md:justify-center md:space-x-6">
-          <a href="/" className="hover:text-white transition">
+        <div className="flex flex-col space-y-2 md:space-y-0 md:flex-row md:justify-center md:space-x-6 justify-center">
+          <a href="/" className="hover:text-white transition duration-300">
             Home
           </a>
-          <a href="/products" className="hover:text-white transition">
+          <a
+            href="/products"
+            className="hover:text-white transition duration-300"
+          >
             Products
           </a>
-          <a href="/about" className="hover:text-white transition">
+          <a href="/about" className="hover:text-white transition duration-300">
             About
           </a>
-          <a href="/contact" className="hover:text-white transition">
+          <a
+            href="/contact"
+            className="hover:text-white transition duration-300"
+          >
             Contact
           </a>
-          <a href="/login" className="hover:text-white transition">
+          <a href="/login" className="hover:text-white transition duration-300">
             Login
           </a>
         </div>
@@ -43,7 +49,8 @@ export default function Footer() {
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-500 transition"
+            aria-label="Facebook"
+            className="hover:bg-blue-500 p-2 rounded-full text-gray-200 hover:text-white transition transform hover:scale-110 duration-300"
           >
             <FaFacebookF />
           </a>
@@ -51,7 +58,8 @@ export default function Footer() {
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-400 transition"
+            aria-label="Twitter"
+            className="hover:bg-blue-400 p-2 rounded-full text-gray-200 hover:text-white transition transform hover:scale-110 duration-300"
           >
             <FaTwitter />
           </a>
@@ -59,7 +67,8 @@ export default function Footer() {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-600 transition"
+            aria-label="LinkedIn"
+            className="hover:bg-blue-600 p-2 rounded-full text-gray-200 hover:text-white transition transform hover:scale-110 duration-300"
           >
             <FaLinkedinIn />
           </a>
@@ -67,15 +76,19 @@ export default function Footer() {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-pink-500 transition"
+            aria-label="Instagram"
+            className="hover:bg-pink-500 p-2 rounded-full text-gray-200 hover:text-white transition transform hover:scale-110 duration-300"
           >
             <FaInstagram />
           </a>
         </div>
       </div>
 
+      {/* Divider */}
+      <div className="border-t border-gray-700"></div>
+
       {/* Bottom bar */}
-      <div className="bg-gray-900 text-gray-500 text-sm text-center py-3 mt-4">
+      <div className="text-gray-500 text-sm text-center py-3">
         Made with ❤️ by Nabila
       </div>
     </footer>
