@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
+import NextAuthSessionProvider from "./Providers/NextAuthSessionProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,11 +22,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen">
-        <Navbar></Navbar>
+        <NextAuthSessionProvider>
+          <Navbar></Navbar>
 
-        <main className="mt-20 flex-grow ">{children}</main>
+          <main className="mt-20 flex-grow ">{children}</main>
 
-        <Footer></Footer>
+          <Footer></Footer>
+        </NextAuthSessionProvider>
       </body>
     </html>
   );

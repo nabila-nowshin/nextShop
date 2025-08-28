@@ -3,14 +3,20 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session } = useSession();
 
   const links = [
     { name: "Products", href: "/products" },
-    { name: "Add Product", href: "/dashboard/add-product" },
-    { name: "Login", href: "/login" },
+    // Add Product only if user is logged in
+    ...(session
+      ? [{ name: "Add Product", href: "/dashboard/add-product" }]
+      : []),
+    // Show Login only if user is NOT logged in
+    ...(session ? [] : [{ name: "Login", href: "/login" }]),
   ];
 
   return (
@@ -33,6 +39,14 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            {session && (
+              <button
+                onClick={() => signOut({ callbackUrl: "/login" })}
+                className="hover:text-red-600 transition-colors"
+              >
+                Logout
+              </button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -64,6 +78,14 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+          {session && (
+            <button
+              onClick={() => signOut({ callbackUrl: "/login" })}
+              className="block text-red-600 font-medium transition-colors"
+            >
+              Logout
+            </button>
+          )}
         </div>
       )}
     </nav>
