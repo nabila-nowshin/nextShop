@@ -29,15 +29,7 @@ export default function Footer() {
           >
             Products
           </a>
-          <a href="/about" className="hover:text-white transition duration-300">
-            About
-          </a>
-          <a
-            href="/contact"
-            className="hover:text-white transition duration-300"
-          >
-            Contact
-          </a>
+
           <a href="/login" className="hover:text-white transition duration-300">
             Login
           </a>

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const products = [
+let products = [
   { id: 1, name: "Laptop", description: "Fast and lightweight", price: 1200 },
   { id: 2, name: "Phone", description: "Latest model smartphone", price: 800 },
   {
@@ -41,4 +41,32 @@ const products = [
 // GET /api/products
 export async function GET() {
   return NextResponse.json(products);
+}
+
+// POST /api/products
+export async function POST(req) {
+  try {
+    const body = await req.json();
+    const { name, description, price } = body;
+
+    if (!name || !description || !price) {
+      return NextResponse.json(
+        { error: "All fields are required" },
+        { status: 400 }
+      );
+    }
+
+    const newProduct = {
+      id: products.length + 1,
+      name,
+      description,
+      price: parseFloat(price),
+    };
+
+    products.push(newProduct);
+
+    return NextResponse.json(newProduct, { status: 201 });
+  } catch (error) {
+    return NextResponse.json({ error: "Invalid request" }, { status: 500 });
+  }
 }
